@@ -31,7 +31,7 @@
                                     <td>{{ $nil->mahasiswa->npm}}</td>
                                     <td>{{ $nil->mahasiswa->user->name}}</td>
                                     <td>{{ $nil->makul->nama_makul}}</td>
-                                    <td>{{ $nil->makul->sks}}</td>
+                                    <td> {{ $nil->makul->sks}} </td>
                                     <td>{{ $nil->nilai}}</td>
                                     <td>
                                         <a href="{{route('edit.nilai',$nil->id)}}" class="btn btn-sm btn-warning">Edit</a>

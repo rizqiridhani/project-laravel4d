@@ -20,12 +20,12 @@
                                 <th>AKSI</th>
                             </tr>
                             @php
-                                $id = 1;
+                        $id = 1;
                             @endphp
-
+                           
                             @foreach ($makul as $mk)
                             <tr>
-                                <td>{{ $id++}}</td>
+                                <td>{{ $id ++}}</td>
                                 <td>{{ $mk->kd_makul }}</td>
                                 <td>{{ $mk->nama_makul}}</td>
                                 <td>{{ $mk->sks}}</td>
