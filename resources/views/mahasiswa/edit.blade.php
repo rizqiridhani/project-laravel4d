@@ -6,60 +6,63 @@
      <div class="row justify-content-center">
          <div class="col-md-12">
              <div class="card">
-                 <div class="card-header">Edit Makul</div>
+                 <div class="card-header">Edit Mahasiswa</div>
                  <div class="card-body">
-                 <form method="POST" action="{{ route('update.mahasiswa', $mahasiswa->id)}}">
+                 <form method="post" action="{{ route('mahasiswa.update', $mahasiswa->id)}}">
                  @csrf
-                 <div class="form-group">
-                            <lable for="nama" class="col-sm-2 control-lable">User ID</lable>
-                            <div class="col-sm-12">
-                            <input type="text" class="form-control" name="user_id"  placeholder="Masukan User ID..." value="{{ is_null
-                                    ('$mahasiswa') ? '' : $mahasiswa->user_id }}">
+                    <div class="form-group">
+                        <div class="form row">
+                            <div class="col">
+                                <label for="">Nama Mahasiswa</label>
+                                <select class="custom-select" id="user_id" name="user_id" required>
+                                    <option selected disabled value="">--Pilih User--</option>
+                                    @foreach ($user as $u)
+                                    <option value="{{ $u->id}}" {{ $mahasiswa->user_id == $u->id ? 'selected' : ''}}>{{ $u->name}}</option>
+                                   @endforeach 
+                                </select>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <lable for="npm" class="col-sm-2 control-lable">NPM</lable>
-                            <div class="col-sm-12">
-                            <input type="text" class="form-control" name="npm" placeholder="Masukan NPM..." value="{{ is_null
+
+                            <div class="col">
+                                <label for="">NPM</label>
+                                <input type="number" name="npm" class="form-control" placeholder="Masukan NPM" maxlength="8"  value="{{ is_null
                                     ('$mahasiswa') ? '' : $mahasiswa->npm }}">
                             </div>
-                        </div>
-                        <di class="form-group">
-                            <lable for="tempat_lahir" class="col-sm-2 control-lable">Tempat Lahir</lable>
-                            <div class="col-sm-12">
-                            <input type="text" class="form-control" name="tempat_lahir" placeholder="Masukan Tempat lahir..." value="{{ is_null
+                            <div class="col">
+                                <label for="">Tempat Lahir</label>
+                                <input type="text" name="tempat_lahir" class="form-control" placeholder="Masukan Tempat Lahir"  value="{{ is_null
                                     ('$mahasiswa') ? '' : $mahasiswa->tempat_lahir }}">
                             </div>
-                        </di>
-                        <div class="form-group">
-                            <lable for="tgl_lahir" class="col-sm-2 control-lable">Tanggal Lahir</lable>
-                            <div class="col-sm-12">
-                            <input type="date" class="form-control" name="tgl_lahir" placeholder="Masukan Tanggal Lahir..."value="{{ is_null
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form row">
+                            <div class="col">
+                                <label for="">Tanggal lahir</label>
+                                <input type="date" name="tanggal_lahir" class="form-control" placeholder="Tambahkan Tanggal Lahir" value="{{ is_null
                                     ('$mahasiswa') ? '' : $mahasiswa->tgl_lahir }}">
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <lable for="alamat" class="col-sm-2 control-lable">Alamat</lable>
-                            <div class="col-sm-12">
-                            <input type="text" class="form-control" name="alamat" placeholder="Masukan Alamat..." value="{{ is_null
-                                    ('$mahasiswa') ? '' : $mahasiswa->alamat }}">
+                            <div class="col">
+                                <label for="">Alamat</label>
+                                <textarea name="alamat" id="alamat" cols="2" rows="3"class="form-control" style="resize: none;">
+                                {{ is_null('$mahasiswa') ? '' : $mahasiswa->alamat }}
+                                </textarea>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <lable for="telepon" class="col-sm-2 control-lable">Telepon</lable>
-                            <div class="col-sm-12">
-                            <input type="text" class="form-control" name="telepon" placeholder="Masukan Telepon..." value="{{ is_null
+                            <div class="col">
+                                <label for="">Telepon</label>
+                                <input type="number" name="telepon" class="form-control" placeholder="Tambahkan Nomor Telepon" value="{{ is_null
                                     ('$mahasiswa') ? '' : $mahasiswa->telepon }}">
                             </div>
                         </div>
+                    </div>
+                    </div>
+                    
                         <div class="form-group">
-                            <label for="gender" class="col-sm-2 control-lable">Gender</label>
+                            <label for="gender" class="col-sm-2 control-lable">Jenis Kelamin</label>
                             <div class="col-sm-12">
-                                <select class="custom-select" id="gender" name="gender" value="{{ is_null
-                                    ('$mahasiswa') ? '' : $mahasiswa->gender }}">
-                                    <option selected disabled value="">Pilih Jenis Kelanin...</option>
-                                    <option value="L">Laki-Laki</option>
-                                    <option value="P">Perempuan</option>
+                                <select class="custom-select" id="gender" name="gender" required>
+                                    <option selected disabled value="">--Pilih Jenis Kelamin--</option>
+                                    <option value="L" {{ $mahasiswa->gender == 'L' ? 'selected' : ''}}>Laki-Laki</option>
+                                    <option value="P" {{ $mahasiswa->gender == 'P' ? 'selected' : ''}}>Perempuan</option>
                                 </select>
                             </div>
                         </div>
